@@ -11,5 +11,11 @@ jobs:
               with:
                   node-version: 18
             - run: npm ci
+            - name: Install OS dependencies for Playwright
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y libnss3 libatk-bridge2.0-0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 \
+                  libxcb1 libx11-xcb1 libxss1 libasound2 libpangocairo-1.0-0 libcairo2 libgtk-3-0 libxshmfence1 \
+                  libx264.so.160 libgles2
             - run: npx playwright install
             - run: npx playwright test
